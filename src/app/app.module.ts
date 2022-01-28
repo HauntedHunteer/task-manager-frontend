@@ -6,20 +6,20 @@ import { HttpClientModule } from "@angular/common/http";
 import { AlertModule } from './_alert';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopNavbarComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
