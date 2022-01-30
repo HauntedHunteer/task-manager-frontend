@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -17,13 +17,12 @@ export class TokenStorageService {
   }
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     private router: Router,
   ) { }
 
   logIn() {
     this.loggedIn.next(true);
-    this.router.navigate(['../dashboard'], { relativeTo: this.activatedRoute});
+    this.router.navigate(['/dashboard']);
   }
 
   logOut(): void {
