@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../_services/auth.service";
 import {TokenStorageService} from "../_services/token-storage.service";
 import {AlertService} from "../_alert";
@@ -27,8 +26,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
     private authService: AuthService,
     private tokenStorageService: TokenStorageService,
     private alertService: AlertService
@@ -63,9 +60,10 @@ export class LoginComponent implements OnInit {
         console.log(data);
         this.tokenStorageService.saveToken(data.jwtToken);
         this.tokenStorageService.saveUser(data);
+        this.tokenStorageService.logIn();
 
         this.alertService.success('Logged successfully', this.alertOptions);
-        this.router.navigate(['../dashboard'], { relativeTo: this.activatedRoute});
+
       },
       (error) => {
         console.log(error.error);

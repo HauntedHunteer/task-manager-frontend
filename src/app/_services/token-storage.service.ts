@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
@@ -8,10 +10,26 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  constructor() { }
+  private loggedIn = new BehaviorSubject<boolean>(false);
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+  ) { }
+
+  logIn() {
+    this.loggedIn.next(true);
+    this.router.navigate(['../dashboard'], { relativeTo: this.activatedRoute});
+  }
 
   logOut(): void {
     window.sessionStorage.clear();
+    this.loggedIn.next(false);
+    this.router.navigate(['/login']);
   }
 
   public saveToken(token: string): void {
