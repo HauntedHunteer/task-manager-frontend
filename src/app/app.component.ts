@@ -10,17 +10,17 @@ import {Observable} from "rxjs";
 export class AppComponent {
   title = 'task-manager-frontend';
 
-  isLoggedIn$: Observable<boolean> | undefined;
+  /*isLoggedIn$: Observable<boolean> | undefined;*/
 
   constructor(
     private tokenStorageService: TokenStorageService) {}
 
   ngOnInit(): void {
-    this.isLoggedIn$ = this.tokenStorageService.isLoggedIn;
+    /*this.isLoggedIn$ = this.tokenStorageService.isLoggedIn;*/
   }
 
-  onLogOut(): void {
+  /*onLogOut(): void {
     this.tokenStorageService.logOut();
-  }
+  }*/
 
 }

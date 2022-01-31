@@ -10,24 +10,24 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  /*private loggedIn = new BehaviorSubject<boolean>(false);
 
   get isLoggedIn() {
-    return this.loggedIn.asObservable();
-  }
+    return this.loggedIn.asObservable(); // todo: hotfix, but need to be repaired
+  }*/
 
   constructor(
     private router: Router,
   ) { }
 
   logIn() {
-    this.loggedIn.next(true);
+    /*this.loggedIn.next(true);*/
     this.router.navigate(['/dashboard']);
   }
 
   logOut(): void {
     window.sessionStorage.clear();
-    this.loggedIn.next(false);
+    /*this.loggedIn.next(false);*/
     this.router.navigate(['/login']);
   }
 

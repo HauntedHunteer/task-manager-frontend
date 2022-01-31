@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenStorageService} from "../_services/token-storage.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private tokenStorageService: TokenStorageService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onLogOut() {
+    this.tokenStorageService.logOut();
   }
 
 }

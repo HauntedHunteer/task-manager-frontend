@@ -8,6 +8,8 @@ import {TokenStorageService} from "../_services/token-storage.service";
 })
 export class AuthGuard implements CanActivate {
 
+  isloggedIn: boolean = false;
+
   constructor(
     private router: Router,
     private tokenStorageService: TokenStorageService
@@ -18,7 +20,15 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    return this.tokenStorageService.isLoggedIn
+    this.isloggedIn = !!this.tokenStorageService.getToken()
+    console.log("guard" + this.isloggedIn);
+    if (this.isloggedIn) {
+      return true;
+    }
+
+    this.router.navigate(['/login']);
+    return false;
+    /*return this.tokenStorageService.isLoggedIn
       .pipe(
         take(1),
         map((isLoggedIn: boolean) => {
@@ -28,7 +38,7 @@ export class AuthGuard implements CanActivate {
           }
           return true;
         })
-  );
+  );*/
   }
 
 }
