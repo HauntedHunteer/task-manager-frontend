@@ -1,0 +1,44 @@
+<ng-container *ngIf="task">
+  <div class="row">
+    <div class="col-6 offset-3">
+
+      <h1>Task details</h1>
+
+      <div class="form-outline form-floating my-4 form-group">
+        <input type="text" id="name" class="form-control" disabled [ngModel]="task!.name"/>
+        <label class="form-label" for="name">Name</label>
+      </div>
+
+      <div class="form-outline form-floating mb-4 form-group">
+        <input type="text" id="description" class="form-control" disabled [ngModel]="task!.description"/>
+        <label class="form-label" for="description">Task description</label>
+      </div>
+
+      <div class="form-outline form-floating mb-4 form-group">
+        <input type="text" id="status" class="form-control" disabled [ngModel]="task!.status"/>
+        <label class="form-label" for="status">Task status</label>
+      </div>
+
+      <div class="form-outline form-floating mb-4 form-group">
+        <input type="text" id="creationDate" class="form-control" disabled [ngModel]="task!.creationDate | date"/>
+        <label class="form-label" for="creationDate">Creation date</label>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <a class="btn btn-primary" routerLink="../../task-edit/{{taskId}}" routerLinkActive="active">Edit</a>
+        </div>
+        <div class="col">
+          <button type="button" (click)="deleteTask()" class="btn btn-danger">Delete</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-warning" routerLink="../../task-list" routerLinkActive="active">Cancel</a>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+

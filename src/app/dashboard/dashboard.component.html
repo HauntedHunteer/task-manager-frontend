@@ -1,3 +1,8 @@
-<p>dashboard works!</p>
-<button (click)="onLogOut()">Log out</button>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid justify-content-start">
+    <a class="btn btn-outline-success me-2" routerLink="./task-create" type="button">New task</a>
+    <a class="btn btn-outline-success me-2" routerLink="./task-list" type="button">My tasks</a>
+    <button (click)="onLogOut()" class="navbar-link btn btn-danger me-3" type="button">Log out</button>
+  </div>
+</nav>
 <router-outlet></router-outlet>

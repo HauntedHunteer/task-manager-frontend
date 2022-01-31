@@ -18,8 +18,8 @@ const routes: Routes = [
     children: [
       { path: 'task-list', component: TaskListComponent },
       { path: 'task-create', component: TaskCreateComponent },
-      { path: 'task-details', component: TaskDetailsComponent },
-      { path: 'task-edit', component: TaskEditComponent },
+      { path: 'task-details/:id', component: TaskDetailsComponent },
+      { path: 'task-edit/:id', component: TaskEditComponent },
     ] },
   { path: '**', component: PageNotFoundComponent },
 ];

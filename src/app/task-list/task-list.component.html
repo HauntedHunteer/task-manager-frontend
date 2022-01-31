@@ -1,0 +1,20 @@
+<div class="row">
+  <table class="table table-responsive">
+    <thead>
+    <tr>
+      <th scope="col">Task name</th>
+      <th scope="col">Creation date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{task.name}}</td>
+      <td>{{task.creationDate | date}}</td>
+      <td>{{task.status}}</td>
+      <td><a class="btn btn-outline-primary" routerLink="../task-details/{{task.taskId}}" type="button">Details</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

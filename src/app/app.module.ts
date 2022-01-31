@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AlertModule } from './_alert';
@@ -29,13 +29,14 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
     TaskEditComponent,
     TaskDetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AlertModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AlertModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

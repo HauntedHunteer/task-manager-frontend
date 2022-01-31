@@ -1,0 +1,62 @@
+<ng-container>
+  <div class="row">
+    <div class="col-6 offset-3">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h1>Edit task</h1>
+        <div class="form-outline form-floating my-4 form-group">
+          <input formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" type="text" id="name" class="form-control" placeholder="Enter task name"/>
+          <label class="form-label" for="name">Name</label>
+
+          <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Task name is required</div>
+            <div *ngIf="f['name'].errors['minlength']">
+              Task name must be at least 2 characters
+            </div>
+            <div *ngIf="f['name'].errors['maxlength']">
+              Task name must not exceed 100 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="form-outline form-floating mb-4 form-group">
+          <input formControlName="description" [ngClass]="{ 'is-invalid': submitted && f['description'].errors }" type="text" id="description" class="form-control" placeholder="Enter task description"/>
+          <label class="form-label" for="description">Task description</label>
+
+          <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+            <div *ngIf="f['description'].errors['required']">Task description is required</div>
+            <div *ngIf="f['description'].errors['minlength']">
+              Task description must be at least 10 characters
+            </div>
+            <div *ngIf="f['description'].errors['maxlength']">
+              Task description must not exceed 255 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="form-outline form-floating mb-4 form-group">
+          <select  formControlName="status" [ngClass]="{ 'is-invalid': submitted && f['status'].errors }" id="status" class="form-control">
+            <option *ngFor="let status of taskStatus | keyvalue" [value]="status.value">
+              {{status.value}}
+            </option>
+          </select>
+          <label class="form-label" for="status">Task status</label>
+
+          <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+            <div *ngIf="f['description'].errors['required']">Task status is required</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary">Edit</button>
+          </div>
+          <div class="col">
+            <a class="btn btn-warning" routerLink="../../task-details/{{taskId}}" routerLinkActive="active">Cancel</a>
+          </div>
+          <div class="col"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-container>
